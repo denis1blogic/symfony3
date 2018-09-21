@@ -22,10 +22,16 @@ class GenusController extends Controller
      */
     public function showAction($genusName)
     {
-        $templating = $this->container->get('templating');
-        $html = $templating->render('genus/show.html.twig', array(
-            'name' => $genusName
-        ));
-        return new Response($html);
+        $notes = [
+            'ololol olooll oo ll o o ll o ol l',
+            'bl a lvbfld dfhj jd djcdc',
+            'Ololo!'
+        ];
+
+
+        return $this->render('genus/show.html.twig', [
+            'name' => $genusName,
+            'notes' => $notes
+        ]);
     }
 }
