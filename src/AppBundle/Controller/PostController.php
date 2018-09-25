@@ -31,6 +31,38 @@ class PostController extends Controller
         ));
     }
 
+
+    /**
+     * @Route("post/list/{page}", name="post_list", requirements={"page"="\d+"})
+     */
+    public function listAction($page = 1)
+    {
+        //var_dump("adaddasdasdasd"); die;
+
+        $em = $this->getDoctrine()->getManager();
+
+        $posts = $em->getRepository('AppBundle:Post')->findBy(array(),array('id' => 'DESC'),10);
+        return $this->render('post/index.html.twig', array(
+            'posts' => $posts,
+        ));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Creates a new post entity.
      *
@@ -101,7 +133,7 @@ class PostController extends Controller
     /**
      * Deletes a post entity.
      *
-     * @Route("/{id}", name="post_delete")
+     * @Route("delete/{id}", name="post_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Post $post)
